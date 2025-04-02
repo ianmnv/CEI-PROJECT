@@ -1,0 +1,61 @@
+/* ESTILOS GENERALES */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --font-size-S: 1.6rem;
+  --font-size-M: 2.4rem;
+  --font-size-L: 3.6rem;
+  --font-size-XL: 6rem;
+  --font-size-XXL: 9rem;
+}
+
+/* ESTILOS DEL HEADER E IMAGENES DE PORTADA */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.header-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-h1 {
+  font-size: var(--font-size-M);
+}
+
+.header-icons {
+  width: 3.2rem;
+  height: 3rem;
+}
+
+section.section-portada {
+  height: 63rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+section.section-portada img {
+  position: absolute;
+  width: 100%;
+  max-width: 42rem;
+  max-height: fit-content;
+}
