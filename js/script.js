@@ -19,9 +19,64 @@
 // fetchProducts();
 
 // // Seleccionando imagenes de la primera seccion y modificando sus posiciones
-const seccionContenedora = document.querySelector(".section-portada");
-const imgsDePortada = seccionContenedora.querySelectorAll("img");
+const seccionContenedora = document.querySelector(".section-portada-wrapper");
+const contenedorImgs = seccionContenedora.querySelectorAll(
+  ".section-portada-div"
+);
+const contenedorBtns = seccionContenedora.querySelector(
+  ".section-contenedor-btns"
+);
+const nextBtn = seccionContenedora.querySelector(".btnNext");
+const prevBtn = seccionContenedora.querySelector(".btnPrev");
 
-imgsDePortada.forEach((img, i) => {
-  img.style.transform = `translateX(-${i * 100}%)`;
+let index = 0;
+// // variables que guarda botones para despues darle una clase dependiendo de index
+let btns = [];
+let slideInterval;
+
+// // funcion que cambia de contenedor cada 3 seg
+function startInterval() {
+  slideInterval = setInterval(() => showSlide(index + 1), 3000);
+}
+
+// // funcion que cambia de img
+function showSlide(newIndex) {
+  // // GPT me ayudo a crear esta linea
+  index = (newIndex + contenedorImgs.length) % contenedorImgs.length;
+
+  contenedorImgs.forEach((img) => img.classList.remove("active"));
+  btns.forEach((btn, btnIndex) =>
+    btn.classList.toggle("active-btn", btnIndex === index)
+  );
+  contenedorImgs[index].classList.add("active");
+}
+
+function createButtons() {
+  contenedorImgs.forEach((_, i) => {
+    const btn = document.createElement("div");
+    btn.classList.add("section-btn");
+    btn.addEventListener("click", () => {
+      clearInterval(slideInterval);
+      showSlide(i);
+      startInterval();
+    });
+    contenedorBtns.appendChild(btn);
+    btns.push(btn);
+  });
+}
+
+nextBtn.addEventListener("click", () => {
+  clearInterval(slideInterval);
+  showSlide(index + 1);
+  startInterval();
 });
+
+prevBtn.addEventListener("click", () => {
+  clearInterval(slideInterval);
+  showSlide(index - 1);
+  startInterval();
+});
+
+createButtons();
+showSlide(index);
+startInterval();
