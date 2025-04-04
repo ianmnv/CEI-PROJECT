@@ -22,6 +22,51 @@ body {
   --font-size-XXL: 9rem;
 }
 
+/* ANIMACIONES */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ESTILOS PARA LA PAGINA CUANDO CARGA */
+.slider-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.slider-loading p {
+  font-size: var(--font-size-M);
+}
+
+.slider-loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
 /* ESTILOS DEL HEADER E IMAGENES DE PORTADA */
 
 header {
@@ -45,18 +90,34 @@ header {
   color: #000;
 }
 
+.header-mobile-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.header-btns-nav {
+  width: 3.2rem;
+  height: 2.8rem;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+
 .header-icons {
   width: 3.2rem;
   height: 2.8rem;
 }
 
-/* section.section-portada {
-} */
+section.section-portada {
+  margin-bottom: 5rem;
+}
 
 .section-portada-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
+  min-height: max-content;
 }
 
 .section-portada-div {
@@ -104,6 +165,7 @@ header {
   width: 2rem;
   border: solid 1px #000;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .section-btn.active-btn {

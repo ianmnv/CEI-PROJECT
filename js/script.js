@@ -1,5 +1,4 @@
 "use strict";
-
 // // PROBANDO LA API
 
 // async function fetchProducts() {
@@ -18,81 +17,79 @@
 
 // fetchProducts();
 
-// // Seleccionando imagenes de la primera seccion y modificando sus posiciones
-const seccionContenedora = document.querySelector(".section-portada-wrapper");
-const contenedorImgs = seccionContenedora.querySelectorAll(
-  ".section-portada-div"
-);
-const contenedorBtns = seccionContenedora.querySelector(
-  ".section-contenedor-btns"
-);
-const nextBtn = seccionContenedora.querySelector(".btnNext");
-const prevBtn = seccionContenedora.querySelector(".btnPrev");
+// // Crea un loading spinner
+const loadingDiv = document.createElement("div");
+loadingDiv.className = "slider-loading";
+loadingDiv.innerHTML = `
+    <div class="loading-spinner"></div>
+    <p>Loading content...</p>
+  `;
+document.body.appendChild(loadingDiv);
 
-let index = 0;
-let btns = [];
-let slideInterval;
-
-// // funcion que cambia de contenedor cada 3 seg
-function startInterval() {
-  slideInterval = setInterval(() => showSlide(index + 1), 3000);
-}
-
-// // funcion que cambia de img
-function showSlide(newIndex) {
-  // // GPT me ayudo a crear esta linea
-  index = (newIndex + contenedorImgs.length) % contenedorImgs.length;
-
-  contenedorImgs.forEach((img) => img.classList.remove("active"));
-  btns.forEach((btn, btnIndex) =>
-    btn.classList.toggle("active-btn", btnIndex === index)
+setTimeout(() => {
+  // // Seleccionando imagenes de la primera seccion y modificando sus posiciones
+  const containerSection = document.querySelector(".section-portada-wrapper");
+  const imgsContainer = containerSection.querySelectorAll(
+    ".section-portada-div"
   );
-  contenedorImgs[index].classList.add("active");
-  setParentHeight();
-}
-
-function createButtons() {
-  contenedorImgs.forEach((_, i) => {
-    const btn = document.createElement("div");
-    btn.classList.add("section-btn");
-    btn.addEventListener("click", () => {
-      clearInterval(slideInterval);
-      showSlide(i);
-      startInterval();
-    });
-    contenedorBtns.appendChild(btn);
-    btns.push(btn);
-  });
-}
-
-nextBtn.addEventListener("click", () => {
-  clearInterval(slideInterval);
-  showSlide(index + 1);
-  startInterval();
-});
-
-prevBtn.addEventListener("click", () => {
-  clearInterval(slideInterval);
-  showSlide(index - 1);
-  startInterval();
-});
-
-createButtons();
-showSlide(index);
-startInterval();
-
-// // Desde que el padre contenedor (seccion contenedora) tiene a todos sus
-// elementos hijo en posicion absoluta, le doy un alto al padre dinamicamente
-function setParentHeight() {
-  const activeDiv = seccionContenedora.querySelector(
-    ".section-portada-div.active"
+  const contenedorBtns = containerSection.querySelector(
+    ".section-contenedor-btns"
   );
+  const nextBtn = containerSection.querySelector(".btnNext");
+  const prevBtn = containerSection.querySelector(".btnPrev");
 
-  if (activeDiv) {
-    const styles = window.getComputedStyle(activeDiv);
-    const height = styles.getPropertyValue("height");
-    seccionContenedora.style.height = height;
+  let index = 0;
+  let btns = [];
+  let slideInterval;
+  // // funcion que cambia de contenedor cada 3 seg
+  const startInterval = () =>
+    (slideInterval = setInterval(() => showSlide(index + 1), 3000));
+
+  // // funcion que cambia de img
+  function showSlide(newIndex) {
+    // // GPT me ayudo a crear esta linea
+    index = (newIndex + imgsContainer.length) % imgsContainer.length;
+
+    imgsContainer.forEach((img) => img.classList.remove("active"));
+    btns.forEach((btn, btnIndex) =>
+      btn.classList.toggle("active-btn", btnIndex === index)
+    );
+    imgsContainer[index].classList.add("active");
+    setParentHeight();
   }
-}
 
-window.addEventListener("resize", setParentHeight);
+  function createButtons() {
+    imgsContainer.forEach((_, i) => {
+      const btn = document.createElement("div");
+      btn.classList.add("section-btn");
+      btn.addEventListener("click", () => utilityFn(i));
+      contenedorBtns.appendChild(btn);
+      btns.push(btn);
+    });
+  }
+
+  // // Desde que el padre contenedor (seccion contenedora) tiene a todos sus
+  // elementos hijo en posicion absoluta, le doy un alto al padre dinamicamente
+  function setParentHeight() {
+    const height = imgsContainer[0].scrollHeight;
+    containerSection.style.height = `${height}px`;
+  }
+
+  function utilityFn(ind) {
+    clearInterval(slideInterval);
+    showSlide(ind);
+    startInterval();
+  }
+
+  setParentHeight();
+  createButtons();
+  showSlide(index);
+  startInterval();
+
+  nextBtn.addEventListener("click", () => utilityFn(index + 1));
+  prevBtn.addEventListener("click", () => utilityFn(index - 1));
+  window.addEventListener("resize", setParentHeight);
+
+  // Quita el loading spinner de la pantalla
+  loadingDiv.classList.add("hidden");
+}, 2000);
