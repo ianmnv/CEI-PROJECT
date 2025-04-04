@@ -30,7 +30,6 @@ const nextBtn = seccionContenedora.querySelector(".btnNext");
 const prevBtn = seccionContenedora.querySelector(".btnPrev");
 
 let index = 0;
-// // variables que guarda botones para despues darle una clase dependiendo de index
 let btns = [];
 let slideInterval;
 
@@ -49,6 +48,7 @@ function showSlide(newIndex) {
     btn.classList.toggle("active-btn", btnIndex === index)
   );
   contenedorImgs[index].classList.add("active");
+  setParentHeight();
 }
 
 function createButtons() {
@@ -80,3 +80,19 @@ prevBtn.addEventListener("click", () => {
 createButtons();
 showSlide(index);
 startInterval();
+
+// // Desde que el padre contenedor (seccion contenedora) tiene a todos sus
+// elementos hijo en posicion absoluta, le doy un alto al padre dinamicamente
+function setParentHeight() {
+  const activeDiv = seccionContenedora.querySelector(
+    ".section-portada-div.active"
+  );
+
+  if (activeDiv) {
+    const styles = window.getComputedStyle(activeDiv);
+    const height = styles.getPropertyValue("height");
+    seccionContenedora.style.height = height;
+  }
+}
+
+window.addEventListener("resize", setParentHeight);
