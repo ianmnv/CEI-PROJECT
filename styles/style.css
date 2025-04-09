@@ -15,6 +15,7 @@ body {
 }
 
 :root {
+  --font-size-XS: 1.2rem;
   --font-size-S: 1.6rem;
   --font-size-M: 2.4rem;
   --font-size-L: 3.6rem;
@@ -67,7 +68,7 @@ body {
   animation: spin 1s linear infinite;
 }
 
-/* ESTILOS DEL HEADER E IMAGENES DE PORTADA */
+/* HEADER */
 
 header {
   display: flex;
@@ -109,8 +110,10 @@ header {
   height: 2.8rem;
 }
 
+/* SECCION PRINCIPAL */
+
 section.section-portada {
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
 }
 
 .section-portada-wrapper {
@@ -197,4 +200,59 @@ section.section-portada {
 .btnIcon {
   width: inherit;
   height: inherit;
+}
+
+/* SECCION PRODUCTOS DESTACADOS */
+
+.contenedor-titulo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-features h1 {
+  font-size: var(--font-size-L);
+  font-weight: 500;
+}
+
+.titulo-categoria {
+  font-size: var(--font-size-M);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.8rem, 20rem));
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.destacados-card {
+  padding: 1rem;
+  border: #b9b9b9 solid 1px;
+  border-radius: 20px;
+  transition: box-shadow 300ms ease;
+  color: #000;
+  text-decoration: none;
+}
+
+.destacados-card:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0 5px 1px #b9b9b9;
+}
+
+.feature-card-img {
+  width: 100%;
+  height: fit-content;
+}
+
+.feature-card-title {
+  font-size: var(--font-size-S);
+  margin-bottom: 0.3rem;
+}
+
+.feature-card-price {
+  font-size: var(--font-size-XS);
+  text-decoration: underline;
 }

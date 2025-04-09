@@ -1,21 +1,4 @@
 "use strict";
-// // PROBANDO LA API
-
-// async function fetchProducts() {
-//   const productCategories = await fetch(
-//     "https://dummyjson.com/products/category-list"
-//   ).then((data) => data.json());
-
-//   const product = await fetch(
-//     "https://dummyjson.com/products/category/mens-shirts"
-//   ).then((product) => product.json());
-
-//   for (const eachProduct of product.products[0].images) {
-//     console.log(eachProduct);
-//   }
-// }
-
-// fetchProducts();
 
 // // Crea un loading spinner
 const loadingDiv = document.createElement("div");
@@ -93,3 +76,65 @@ setTimeout(() => {
   // Quita el loading spinner de la pantalla
   loadingDiv.classList.add("hidden");
 }, 2000);
+
+// // funcion para obtener productos falsos desde dummyjson.com
+async function fetchProduct(category) {
+  const product = await fetch(
+    `https://dummyjson.com/products/category/${category}`
+  ).then((product) => product.json());
+
+  return product;
+
+  // // Categorias por las que se muestran en la pagina
+  // mens-shirts
+  // mens-watches
+  // womens-jewellery
+  // womens-dresses
+}
+
+// // Obtiene productos para destacados y los muestra en la pagina
+async function displayDestacados() {
+  const menWatches = await fetchProduct("mens-watches");
+  const womensJewellery = await fetchProduct("womens-jewellery");
+  console.log(menWatches);
+
+  const contenedorTituloHombre = document.querySelector(".titulo-H");
+  const contenedorTituloMujer = document.querySelector(".titulo-M");
+
+  const menWatchesArr = menWatches.products.slice(0, 4);
+  const womensJewelleryArr = womensJewellery.products.slice(0, 4);
+
+  loopOver(menWatchesArr, contenedorTituloHombre);
+  loopOver(womensJewelleryArr, contenedorTituloMujer);
+}
+
+// // funcion de utilidad para mostrar productos
+function loopOver(array, contenedor) {
+  const contenedorGrid = document.createElement("div");
+  contenedorGrid.classList.add("features-grid");
+
+  array.map((el) => {
+    const contenedorAnchor = document.createElement("a");
+    contenedorAnchor.classList.add("destacados-card");
+    contenedorAnchor.setAttribute("href", "#");
+
+    const tituloEl = document.createElement("h3");
+    tituloEl.classList.add("feature-card-title");
+    tituloEl.textContent = el.title;
+
+    const precioSpan = document.createElement("span");
+    precioSpan.classList.add("feature-card-price");
+    precioSpan.textContent = `$ ${el.price}`;
+
+    const imgEl = document.createElement("img");
+    imgEl.classList.add("feature-card-img");
+    imgEl.setAttribute("src", el.thumbnail);
+    imgEl.setAttribute("alt", "elementos destacados");
+
+    contenedorAnchor.append(imgEl, tituloEl, precioSpan);
+    contenedorGrid.append(contenedorAnchor);
+    contenedor.after(contenedorGrid);
+  });
+}
+
+displayDestacados();
