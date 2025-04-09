@@ -256,3 +256,40 @@ section.section-portada {
   font-size: var(--font-size-XS);
   text-decoration: underline;
 }
+
+/* FOOTER */
+
+footer {
+  background-color: #000;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(12rem, 1fr));
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-contact-p,
+.footer-contact-p a {
+  color: #fff;
+  font-size: var(--font-size-S);
+  word-break: break-word;
+}
+
+.footer-logo-container {
+  background-color: #fff;
+  color: #000;
+  display: inline-block;
+  padding: 1rem;
+}
+
+.footer-icons {
+  width: 5rem;
+  height: 5rem;
+}

@@ -96,7 +96,6 @@ async function fetchProduct(category) {
 async function displayDestacados() {
   const menWatches = await fetchProduct("mens-watches");
   const womensJewellery = await fetchProduct("womens-jewellery");
-  console.log(menWatches);
 
   const contenedorTituloHombre = document.querySelector(".titulo-H");
   const contenedorTituloMujer = document.querySelector(".titulo-M");
