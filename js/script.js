@@ -9,6 +9,21 @@ loadingDiv.innerHTML = `
   `;
 document.body.appendChild(loadingDiv);
 
+// // menu acordion que se muestra tras hacer click en el icono de barras del header
+const menuBtn = document.querySelector(".header-btn-menu");
+const menuMobile = document.querySelector(".menu-mobile");
+const closeMenuBtn = document.querySelector(".close-icon");
+
+menuBtn.addEventListener("click", () => {
+  menuMobile.classList.add("menu-transition");
+  document.body.classList.add("body-stop-overflow-y");
+});
+
+closeMenuBtn.addEventListener("click", () => {
+  menuMobile.classList.remove("menu-transition");
+  document.body.classList.remove("body-stop-overflow-y");
+});
+
 setTimeout(() => {
   // // Seleccionando imagenes de la primera seccion y modificando sus posiciones
   const containerSection = document.querySelector(".section-portada-wrapper");
@@ -88,8 +103,10 @@ async function fetchProduct(category) {
   // // Categorias por las que se muestran en la pagina
   // mens-shirts
   // mens-watches
+  // mens-shoes
   // womens-jewellery
   // womens-dresses
+  // womens-shoes
 }
 
 // // Obtiene productos para destacados y los muestra en la pagina
@@ -100,8 +117,8 @@ async function displayDestacados() {
   const contenedorTituloHombre = document.querySelector(".titulo-H");
   const contenedorTituloMujer = document.querySelector(".titulo-M");
 
-  const menWatchesArr = menWatches.products.slice(0, 4);
-  const womensJewelleryArr = womensJewellery.products.slice(0, 4);
+  const menWatchesArr = menWatches.products;
+  const womensJewelleryArr = womensJewellery.products;
 
   loopOver(menWatchesArr, contenedorTituloHombre);
   loopOver(womensJewelleryArr, contenedorTituloMujer);

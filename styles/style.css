@@ -12,6 +12,13 @@ html {
 
 body {
   font-family: "Montserrat", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* clase agregada cuando se muestra el menu en mobile y tablet */
+.body-stop-overflow-y {
+  overflow-y: hidden;
 }
 
 :root {
@@ -66,6 +73,38 @@ body {
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
+}
+
+/* MENU mobile y tablet */
+.menu-mobile {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  background-color: #fff;
+  max-width: 30rem;
+  transition: left 300ms ease-in;
+}
+
+.menu-transition {
+  right: 0;
+  z-index: 1;
+}
+
+.menu-title,
+.menu-title h3 {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: var(--font-size-M);
+  font-weight: 400;
+}
+
+.close-icon {
+  height: 5rem;
+  width: 5rem;
+  cursor: pointer;
 }
 
 /* HEADER */
@@ -211,7 +250,7 @@ section.section-portada {
   margin-bottom: 2rem;
 }
 
-.section-features h1 {
+.section-features h2 {
   font-size: var(--font-size-L);
   font-weight: 500;
 }
@@ -263,9 +302,9 @@ footer {
   background-color: #000;
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .footer-columns {
