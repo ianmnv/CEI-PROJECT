@@ -83,6 +83,7 @@ body {
   right: 100%;
   width: 100%;
   background-color: #fff;
+  border-left: solid #000 3px;
   max-width: 30rem;
   transition: left 300ms ease-in;
 }
@@ -92,19 +93,64 @@ body {
   z-index: 1;
 }
 
-.menu-title,
-.menu-title h3 {
+.menu-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1rem;
-  font-size: var(--font-size-M);
+  background-color: #000;
+}
+
+.menu-title h3 {
+  font-size: var(--font-size-L);
   font-weight: 400;
+  color: #fff;
 }
 
 .close-icon {
-  height: 5rem;
-  width: 5rem;
+  height: 3.6rem;
+  width: 3.6rem;
   cursor: pointer;
+  stroke: #fff;
+}
+
+.menu-acc-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #fff;
+  font-size: var(--font-size-M);
+  border-bottom: #000 solid 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-category-icons {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.menu-accordion-categorias {
+  display: flex;
+  flex-direction: column;
+  border-bottom: #000 solid 1px;
+}
+
+.menu-accordion-categorias a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  font-size: var(--font-size-S);
+  color: #000;
+  text-decoration: none;
+  border-bottom: #000 solid 1px;
+}
+
+.menu-accordion-categorias a svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 /* HEADER */
@@ -319,6 +365,21 @@ footer {
   color: #fff;
   font-size: var(--font-size-S);
   word-break: break-word;
+}
+
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contacts a {
+  margin-bottom: 0.3rem;
 }
 
 .footer-logo-container {
