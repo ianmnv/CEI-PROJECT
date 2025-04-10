@@ -127,8 +127,8 @@ body {
 }
 
 .menu-category-icons {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .menu-accordion-categorias {
@@ -151,6 +151,10 @@ body {
 .menu-accordion-categorias a svg {
   width: 2rem;
   height: 2rem;
+}
+
+.hide {
+  display: none;
 }
 
 /* HEADER */
