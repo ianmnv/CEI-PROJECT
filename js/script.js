@@ -53,7 +53,6 @@ function createButtons() {
 // elementos hijo en posicion absoluta, le doy un alto al padre dinamicamente
 function setParentHeight() {
   const height = imgsContainer[1].scrollHeight;
-  console.log(height);
   containerSection.style.height = `${height}px`;
 }
 
@@ -63,22 +62,8 @@ function utilityFn(ind) {
   startInterval();
 }
 
-window.addEventListener("load", () => {
-  setParentHeight();
-  createButtons();
-  showSlide(index);
-  startInterval();
-
-  nextBtn.addEventListener("click", () => utilityFn(index + 1));
-  prevBtn.addEventListener("click", () => utilityFn(index - 1));
-  loadingDiv.classList.add("hidden");
-  window.addEventListener("resize", setParentHeight);
-});
-
-// Quita el loading spinner de la pantalla
-
 // // funcion para obtener productos falsos desde dummyjson.com
-export async function fetchProduct(category) {
+async function fetchProduct(category) {
   const product = await fetch(
     `https://dummyjson.com/products/category/${category}`
   ).then((product) => product.json());
@@ -95,50 +80,42 @@ export async function fetchProduct(category) {
 }
 
 // // Obtiene productos para destacados y los muestra en la pagina
-async function displayDestacados() {
-  const menWatches = await fetchProduct("mens-watches");
-  const womensJewellery = await fetchProduct("womens-jewellery");
+const contenedorTituloHombre = document.querySelector(".titulo-H");
+const contenedorTituloMujer = document.querySelector(".titulo-M");
 
-  const contenedorTituloHombre = document.querySelector(".titulo-H");
-  const contenedorTituloMujer = document.querySelector(".titulo-M");
+async function displayDestacados(query, contenedorPadre) {
+  const { products } = await fetchProduct(query);
 
-  const menWatchesArr = menWatches.products;
-  const womensJewelleryArr = womensJewellery.products;
-
-  loopOver(menWatchesArr, contenedorTituloHombre);
-  loopOver(womensJewelleryArr, contenedorTituloMujer);
-}
-
-// // funcion de utilidad para mostrar productos
-function loopOver(array, contenedor) {
   const contenedorGrid = document.createElement("div");
   contenedorGrid.classList.add("features-grid");
 
-  array.map((el) => {
+  products.map(({ title, price, thumbnail }, i) => {
+    console.log(products[i]);
+
     const contenedorAnchor = document.createElement("a");
     contenedorAnchor.classList.add("destacados-card");
-    contenedorAnchor.setAttribute("href", "#");
+    contenedorAnchor.setAttribute("href", "./productoIndividual.html");
 
     const tituloEl = document.createElement("h3");
     tituloEl.classList.add("feature-card-title");
-    tituloEl.textContent = el.title;
+    tituloEl.textContent = title;
 
     const precioSpan = document.createElement("span");
     precioSpan.classList.add("feature-card-price");
-    precioSpan.textContent = `$ ${el.price}`;
+    precioSpan.textContent = `$ ${price}`;
 
     const imgEl = document.createElement("img");
     imgEl.classList.add("feature-card-img");
-    imgEl.setAttribute("src", el.thumbnail);
+    imgEl.setAttribute("src", thumbnail);
     imgEl.setAttribute("alt", "elementos destacados");
+    imgEl.setAttribute("loading", "lazy");
 
     contenedorAnchor.append(imgEl, tituloEl, precioSpan);
     contenedorGrid.append(contenedorAnchor);
-    contenedor.after(contenedorGrid);
   });
-}
 
-displayDestacados();
+  contenedorPadre.after(contenedorGrid);
+}
 
 // // menu acordion que se muestra tras hacer click en el icono de barras del header
 const menuBtn = document.querySelector(".header-btn-menu");
@@ -176,3 +153,26 @@ function runActionsOnMenu() {
 }
 
 runActionsOnMenu();
+
+// Event load para que solo se llamen las funciones una vez que ha cargado todo el html y css
+window.addEventListener("load", () => {
+  // funciones para el slider
+  setParentHeight();
+  createButtons();
+  showSlide(index);
+  startInterval();
+  nextBtn.addEventListener("click", () => utilityFn(index + 1));
+  prevBtn.addEventListener("click", () => utilityFn(index - 1));
+
+  // funciones que sirven para renderizar destacados
+  displayDestacados("mens-watches", contenedorTituloHombre);
+  displayDestacados("womens-jewellery", contenedorTituloMujer);
+
+  // Quita el loading spinner de la pantalla
+  loadingDiv.classList.add("hidden");
+
+  // setParent sera llamado si se reajusta la ventana y adaptar la altura
+  window.addEventListener("resize", setParentHeight);
+});
+
+export { displayDestacados, fetchProduct };
