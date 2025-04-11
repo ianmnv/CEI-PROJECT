@@ -1,0 +1,1 @@
+import { fetchProduct } from "./script";

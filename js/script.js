@@ -9,94 +9,61 @@ loadingDiv.innerHTML = `
   `;
 document.body.appendChild(loadingDiv);
 
-// // menu acordion que se muestra tras hacer click en el icono de barras del header
-const menuBtn = document.querySelector(".header-btn-menu");
-const menuMobile = document.querySelector(".menu-mobile");
-const closeMenuBtn = document.querySelector(".close-icon");
-const btnCategories = menuMobile.querySelectorAll(".menu-acc-btn");
-const categories = menuMobile.querySelectorAll(".menu-accordion-categorias");
-const categoriesIcons = menuMobile.querySelectorAll(".menu-category-icons");
+// // Seleccionando imagenes de la primera seccion y modificando sus posiciones
+const containerSection = document.querySelector(".section-portada-wrapper");
+const imgsContainer = containerSection.querySelectorAll(".section-portada-div");
+const contenedorBtns = containerSection.querySelector(
+  ".section-contenedor-btns"
+);
+const nextBtn = containerSection.querySelector(".btnNext");
+const prevBtn = containerSection.querySelector(".btnPrev");
 
-// evento que abre el menu de categorias
-menuBtn.addEventListener("click", () => {
-  menuMobile.classList.add("menu-transition");
-  document.body.classList.add("body-stop-overflow-y");
-});
+let index = 0;
+let btns = [];
+let slideInterval;
 
-// evento que cierra el menu de categorias
-closeMenuBtn.addEventListener("click", () => {
-  menuMobile.classList.remove("menu-transition");
-  document.body.classList.remove("body-stop-overflow-y");
-});
+// // funcion que cambia de contenedor cada 3 seg
+const startInterval = () =>
+  (slideInterval = setInterval(() => showSlide(index + 1), 3000));
 
-// evento que abre cada categoria
-btnCategories.forEach((btn, i) => {
-  btn.addEventListener("click", () => {
-    if (categories[i].classList.contains("hide")) {
-      categories[i].classList.remove("hide");
-      categoriesIcons[i].style.transform = "rotate(90deg)";
-    } else {
-      categories[i].classList.add("hide");
-      categoriesIcons[i].style.transform = "rotate(0deg)";
-    }
+// // funcion que cambia de img
+function showSlide(newIndex) {
+  // // GPT me ayudo a crear esta linea
+  index = (newIndex + imgsContainer.length) % imgsContainer.length;
+
+  imgsContainer.forEach((img) => img.classList.remove("active"));
+  btns.forEach((btn, btnIndex) =>
+    btn.classList.toggle("active-btn", btnIndex === index)
+  );
+  imgsContainer[index].classList.add("active");
+  setParentHeight();
+}
+
+function createButtons() {
+  imgsContainer.forEach((_, i) => {
+    const btn = document.createElement("div");
+    btn.classList.add("section-btn");
+    btn.addEventListener("click", () => utilityFn(i));
+    contenedorBtns.appendChild(btn);
+    btns.push(btn);
   });
-});
+}
 
-setTimeout(() => {
-  // // Seleccionando imagenes de la primera seccion y modificando sus posiciones
-  const containerSection = document.querySelector(".section-portada-wrapper");
-  const imgsContainer = containerSection.querySelectorAll(
-    ".section-portada-div"
-  );
-  const contenedorBtns = containerSection.querySelector(
-    ".section-contenedor-btns"
-  );
-  const nextBtn = containerSection.querySelector(".btnNext");
-  const prevBtn = containerSection.querySelector(".btnPrev");
+// // Desde que el padre contenedor (seccion contenedora) tiene a todos sus
+// elementos hijo en posicion absoluta, le doy un alto al padre dinamicamente
+function setParentHeight() {
+  const height = imgsContainer[1].scrollHeight;
+  console.log(height);
+  containerSection.style.height = `${height}px`;
+}
 
-  let index = 0;
-  let btns = [];
-  let slideInterval;
-  // // funcion que cambia de contenedor cada 3 seg
-  const startInterval = () =>
-    (slideInterval = setInterval(() => showSlide(index + 1), 3000));
+function utilityFn(ind) {
+  clearInterval(slideInterval);
+  showSlide(ind);
+  startInterval();
+}
 
-  // // funcion que cambia de img
-  function showSlide(newIndex) {
-    // // GPT me ayudo a crear esta linea
-    index = (newIndex + imgsContainer.length) % imgsContainer.length;
-
-    imgsContainer.forEach((img) => img.classList.remove("active"));
-    btns.forEach((btn, btnIndex) =>
-      btn.classList.toggle("active-btn", btnIndex === index)
-    );
-    imgsContainer[index].classList.add("active");
-    setParentHeight();
-  }
-
-  function createButtons() {
-    imgsContainer.forEach((_, i) => {
-      const btn = document.createElement("div");
-      btn.classList.add("section-btn");
-      btn.addEventListener("click", () => utilityFn(i));
-      contenedorBtns.appendChild(btn);
-      btns.push(btn);
-    });
-  }
-
-  // // Desde que el padre contenedor (seccion contenedora) tiene a todos sus
-  // elementos hijo en posicion absoluta, le doy un alto al padre dinamicamente
-  function setParentHeight() {
-    const height = imgsContainer[0].scrollHeight;
-    containerSection.style.height = `${height}px`;
-  }
-
-  function utilityFn(ind) {
-    clearInterval(slideInterval);
-    showSlide(ind);
-    startInterval();
-  }
-
+window.addEventListener("load", () => {
   setParentHeight();
   createButtons();
   showSlide(index);
@@ -104,14 +71,14 @@ setTimeout(() => {
 
   nextBtn.addEventListener("click", () => utilityFn(index + 1));
   prevBtn.addEventListener("click", () => utilityFn(index - 1));
-  window.addEventListener("resize", setParentHeight);
-
-  // Quita el loading spinner de la pantalla
   loadingDiv.classList.add("hidden");
-}, 2000);
+  window.addEventListener("resize", setParentHeight);
+});
+
+// Quita el loading spinner de la pantalla
 
 // // funcion para obtener productos falsos desde dummyjson.com
-async function fetchProduct(category) {
+export async function fetchProduct(category) {
   const product = await fetch(
     `https://dummyjson.com/products/category/${category}`
   ).then((product) => product.json());
@@ -172,3 +139,40 @@ function loopOver(array, contenedor) {
 }
 
 displayDestacados();
+
+// // menu acordion que se muestra tras hacer click en el icono de barras del header
+const menuBtn = document.querySelector(".header-btn-menu");
+const menuMobile = document.querySelector(".menu-mobile");
+const closeMenuBtn = document.querySelector(".close-icon");
+const btnCategories = menuMobile.querySelectorAll(".menu-acc-btn");
+const categories = menuMobile.querySelectorAll(".menu-accordion-categorias");
+const categoriesIcons = menuMobile.querySelectorAll(".menu-category-icons");
+
+function runActionsOnMenu() {
+  // evento que abre el menu de categorias
+  menuBtn.addEventListener("click", () => {
+    menuMobile.classList.add("menu-transition");
+    document.body.classList.add("body-stop-overflow-y");
+  });
+
+  // evento que cierra el menu de categorias
+  closeMenuBtn.addEventListener("click", () => {
+    menuMobile.classList.remove("menu-transition");
+    document.body.classList.remove("body-stop-overflow-y");
+  });
+
+  // evento que abre cada categoria
+  btnCategories.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      if (categories[i].classList.contains("hide")) {
+        categories[i].classList.remove("hide");
+        categoriesIcons[i].style.transform = "rotate(90deg)";
+      } else {
+        categories[i].classList.add("hide");
+        categoriesIcons[i].style.transform = "rotate(0deg)";
+      }
+    });
+  });
+}
+
+runActionsOnMenu();
