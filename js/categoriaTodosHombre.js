@@ -1,1 +1,3 @@
-import { fetchProduct } from "./script";
+import runActionsOnMenu from "./utilityFnMenu.js";
+
+runActionsOnMenu();

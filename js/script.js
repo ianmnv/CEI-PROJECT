@@ -1,4 +1,7 @@
 "use strict";
+// funciones que se usan en diferentes paginas
+import { displayCardProducts } from "./utilityFnsProducts.js";
+import runActionsOnMenu from "./utilityFnMenu.js";
 
 // // Crea un loading spinner
 const loadingDiv = document.createElement("div");
@@ -62,97 +65,8 @@ function utilityFn(ind) {
   startInterval();
 }
 
-// // funcion para obtener productos falsos desde dummyjson.com
-async function fetchProduct(category) {
-  const product = await fetch(
-    `https://dummyjson.com/products/category/${category}`
-  ).then((product) => product.json());
-
-  return product;
-
-  // // Categorias por las que se muestran en la pagina
-  // mens-shirts
-  // mens-watches
-  // mens-shoes
-  // womens-jewellery
-  // womens-dresses
-  // womens-shoes
-}
-
-// // Obtiene productos para destacados y los muestra en la pagina
 const contenedorTituloHombre = document.querySelector(".titulo-H");
 const contenedorTituloMujer = document.querySelector(".titulo-M");
-
-async function displayDestacados(query, contenedorPadre) {
-  const { products } = await fetchProduct(query);
-
-  const contenedorGrid = document.createElement("div");
-  contenedorGrid.classList.add("features-grid");
-
-  products.map(({ title, price, thumbnail }, i) => {
-    console.log(products[i]);
-
-    const contenedorAnchor = document.createElement("a");
-    contenedorAnchor.classList.add("destacados-card");
-    contenedorAnchor.setAttribute("href", "./productoIndividual.html");
-
-    const tituloEl = document.createElement("h3");
-    tituloEl.classList.add("feature-card-title");
-    tituloEl.textContent = title;
-
-    const precioSpan = document.createElement("span");
-    precioSpan.classList.add("feature-card-price");
-    precioSpan.textContent = `$ ${price}`;
-
-    const imgEl = document.createElement("img");
-    imgEl.classList.add("feature-card-img");
-    imgEl.setAttribute("src", thumbnail);
-    imgEl.setAttribute("alt", "elementos destacados");
-    imgEl.setAttribute("loading", "lazy");
-
-    contenedorAnchor.append(imgEl, tituloEl, precioSpan);
-    contenedorGrid.append(contenedorAnchor);
-  });
-
-  contenedorPadre.after(contenedorGrid);
-}
-
-// // menu acordion que se muestra tras hacer click en el icono de barras del header
-const menuBtn = document.querySelector(".header-btn-menu");
-const menuMobile = document.querySelector(".menu-mobile");
-const closeMenuBtn = document.querySelector(".close-icon");
-const btnCategories = menuMobile.querySelectorAll(".menu-acc-btn");
-const categories = menuMobile.querySelectorAll(".menu-accordion-categorias");
-const categoriesIcons = menuMobile.querySelectorAll(".menu-category-icons");
-
-function runActionsOnMenu() {
-  // evento que abre el menu de categorias
-  menuBtn.addEventListener("click", () => {
-    menuMobile.classList.add("menu-transition");
-    document.body.classList.add("body-stop-overflow-y");
-  });
-
-  // evento que cierra el menu de categorias
-  closeMenuBtn.addEventListener("click", () => {
-    menuMobile.classList.remove("menu-transition");
-    document.body.classList.remove("body-stop-overflow-y");
-  });
-
-  // evento que abre cada categoria
-  btnCategories.forEach((btn, i) => {
-    btn.addEventListener("click", () => {
-      if (categories[i].classList.contains("hide")) {
-        categories[i].classList.remove("hide");
-        categoriesIcons[i].style.transform = "rotate(90deg)";
-      } else {
-        categories[i].classList.add("hide");
-        categoriesIcons[i].style.transform = "rotate(0deg)";
-      }
-    });
-  });
-}
-
-runActionsOnMenu();
 
 // Event load para que solo se llamen las funciones una vez que ha cargado todo el html y css
 window.addEventListener("load", () => {
@@ -164,9 +78,12 @@ window.addEventListener("load", () => {
   nextBtn.addEventListener("click", () => utilityFn(index + 1));
   prevBtn.addEventListener("click", () => utilityFn(index - 1));
 
+  // funcion para menu
+  runActionsOnMenu();
+
   // funciones que sirven para renderizar destacados
-  displayDestacados("mens-watches", contenedorTituloHombre);
-  displayDestacados("womens-jewellery", contenedorTituloMujer);
+  displayCardProducts("mens-watches", contenedorTituloHombre);
+  displayCardProducts("womens-jewellery", contenedorTituloMujer);
 
   // Quita el loading spinner de la pantalla
   loadingDiv.classList.add("hidden");
@@ -174,5 +91,3 @@ window.addEventListener("load", () => {
   // setParent sera llamado si se reajusta la ventana y adaptar la altura
   window.addEventListener("resize", setParentHeight);
 });
-
-export { displayDestacados, fetchProduct };

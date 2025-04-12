@@ -317,16 +317,19 @@ section.section-portada {
   margin-bottom: 4rem;
 }
 
-.destacados-card {
+.features-card {
   padding: 1rem;
   border: #b9b9b9 solid 1px;
   border-radius: 20px;
-  transition: box-shadow 300ms ease;
   color: #000;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 300ms ease;
 }
 
-.destacados-card:hover {
+.features-card:hover {
   transform: scale(1.025);
   box-shadow: 0 0 5px 1px #b9b9b9;
 }
@@ -341,8 +344,14 @@ section.section-portada {
   margin-bottom: 0.3rem;
 }
 
-.feature-card-price {
+.feature-card-info {
   font-size: var(--font-size-XS);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feature-card-price {
   text-decoration: underline;
 }
 
