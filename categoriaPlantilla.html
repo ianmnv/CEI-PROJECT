@@ -10,6 +10,7 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/categoriaPlantilla.css" />
     <title>Icon | Todos los productos de hombre</title>
   </head>
 
@@ -262,7 +263,19 @@
     </div>
 
     <section class="section-search-and-filter">
-      <input type="search" name="search-product" id="search-product" />
+      <div class="section-search-container">
+        <div class="search-label-input-container">
+          <label for="search-product-input">Busca productos</label>
+          <input
+            type="search"
+            name="search-product"
+            id="search-product-input"
+            placeholder="Escribe aqui..."
+          />
+        </div>
+
+        <button class="search-btn">Buscar</button>
+      </div>
 
       <div class="section-filter-container">
         <h3>Filtra por</h3>
