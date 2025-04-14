@@ -13,7 +13,6 @@ html {
 body {
   font-family: "Montserrat", sans-serif;
   position: relative;
-  overflow-x: hidden;
 }
 
 /* clase agregada cuando se muestra el menu en mobile y tablet */
@@ -80,17 +79,18 @@ body {
   height: 100vh;
   position: absolute;
   top: 0;
-  right: 100%;
+  right: 0;
   width: 100%;
   background-color: #fff;
   border-left: solid #000 2px;
   max-width: 30rem;
-  transition: left 300ms ease-in;
+  z-index: 1;
+  transform: translateX(100%);
+  transition: transform 500ms ease-in-out;
 }
 
 .menu-transition {
-  right: 0;
-  z-index: 1;
+  transform: translateX(0);
 }
 
 .menu-title {

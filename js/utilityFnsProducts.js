@@ -16,15 +16,20 @@ async function fetchProduct(category) {
 }
 
 // // hace un request al dummyjson API y despliega 'cards', funcion reusable
-export async function displayCardProducts(query, contenedorPadre) {
-  const { products } = await fetchProduct(query);
+export async function displayCardProducts(queryArray, contenedorPadre) {
+  const allProducts = await Promise.all(
+    queryArray.map(async (query) => {
+      const { products } = await fetchProduct(query);
+      return products;
+    })
+  );
 
   const contenedorGrid = document.createElement("div");
   contenedorGrid.classList.add("features-grid");
 
-  products.map(({ title, price, thumbnail, rating }, i) => {
-    console.log(products[i]);
+  console.log(allProducts.flat());
 
+  allProducts.flat().map(({ title, price, thumbnail, rating }) => {
     const contenedorAnchor = document.createElement("a");
     contenedorAnchor.classList.add("features-card");
     contenedorAnchor.setAttribute("href", "./productoIndividual.html");

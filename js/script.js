@@ -83,8 +83,8 @@ window.addEventListener("load", () => {
   navigateTo();
 
   // funciones que sirven para renderizar destacados
-  displayCardProducts("mens-watches", contenedorTituloHombre);
-  displayCardProducts("womens-jewellery", contenedorTituloMujer);
+  displayCardProducts(["mens-watches"], contenedorTituloHombre);
+  displayCardProducts(["womens-jewellery"], contenedorTituloMujer);
 
   // Quita el loading spinner de la pantalla
   loadingDiv.classList.add("hidden");
