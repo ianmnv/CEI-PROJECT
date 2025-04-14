@@ -2,15 +2,12 @@
 // funciones que se usan en diferentes paginas
 import { displayCardProducts } from "./utilityFnsProducts.js";
 import { runActionsOnMenu, navigateTo } from "./utilityFnMenu.js";
+import {
+  showLoadingSpinner,
+  hideLoadingSpinner,
+} from "./utilityFnsLoadingSpinner.js";
 
-// // Crea un loading spinner
-const loadingDiv = document.createElement("div");
-loadingDiv.className = "slider-loading";
-loadingDiv.innerHTML = `
-    <div class="loading-spinner"></div>
-    <p>Loading content...</p>
-  `;
-document.body.appendChild(loadingDiv);
+showLoadingSpinner();
 
 // // Seleccionando imagenes de la primera seccion y modificando sus posiciones
 const containerSection = document.querySelector(".section-portada-wrapper");
@@ -86,8 +83,7 @@ window.addEventListener("load", () => {
   displayCardProducts(["mens-watches"], contenedorTituloHombre);
   displayCardProducts(["womens-jewellery"], contenedorTituloMujer);
 
-  // Quita el loading spinner de la pantalla
-  loadingDiv.classList.add("hidden");
+  hideLoadingSpinner();
 
   // setParent sera llamado si se reajusta la ventana y adaptar la altura
   window.addEventListener("resize", setParentHeight);

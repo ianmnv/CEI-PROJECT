@@ -29,16 +29,6 @@ body {
   --font-size-XXL: 9rem;
 }
 
-/* ANIMACIONES */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /* ESTILOS PARA LA PAGINA CUANDO CARGA */
 .slider-loading {
   position: fixed;
@@ -83,7 +73,6 @@ body {
   width: 100%;
   background-color: #fff;
   border-left: solid #000 2px;
-  max-width: 30rem;
   z-index: 1;
   transform: translateX(100%);
   transition: transform 500ms ease-in-out;
@@ -97,7 +86,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   background-color: #000;
 }
 
@@ -116,7 +105,7 @@ body {
 
 .menu-acc-btn {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background-color: #fff;
   font-size: var(--font-size-M);
   border-bottom: #000 solid 2px;
@@ -141,7 +130,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2.5rem;
+  padding: 1rem 3rem;
   font-size: var(--font-size-S);
   color: #000;
   text-decoration: none;
@@ -405,4 +394,14 @@ footer {
 .footer-icons {
   width: 5rem;
   height: 5rem;
+}
+
+/* ANIMACIONES */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
