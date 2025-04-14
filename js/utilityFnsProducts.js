@@ -6,7 +6,7 @@ async function fetchProduct(category) {
 
   return product;
 
-  // // Categorias por las que se muestran en la pagina
+  // // Categorias que se muestran en la pagina
   // mens-shirts
   // mens-watches
   // mens-shoes
@@ -53,5 +53,5 @@ export async function displayCardProducts(query, contenedorPadre) {
     contenedorGrid.append(contenedorAnchor);
   });
 
-  contenedorPadre.after(contenedorGrid);
+  contenedorPadre.append(contenedorGrid);
 }

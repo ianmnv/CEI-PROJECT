@@ -1,7 +1,7 @@
 "use strict";
 // funciones que se usan en diferentes paginas
 import { displayCardProducts } from "./utilityFnsProducts.js";
-import runActionsOnMenu from "./utilityFnMenu.js";
+import { runActionsOnMenu, navigateTo } from "./utilityFnMenu.js";
 
 // // Crea un loading spinner
 const loadingDiv = document.createElement("div");
@@ -80,6 +80,7 @@ window.addEventListener("load", () => {
 
   // funcion para menu
   runActionsOnMenu();
+  navigateTo();
 
   // funciones que sirven para renderizar destacados
   displayCardProducts("mens-watches", contenedorTituloHombre);

@@ -1,11 +1,12 @@
 // // menu acordion que se muestra tras hacer click en el icono de barras del header
-export default function runActionsOnMenu() {
-  const menuBtn = document.querySelector(".header-btn-menu");
-  const menuMobile = document.querySelector(".menu-mobile");
-  const closeMenuBtn = document.querySelector(".close-icon");
-  const btnCategories = menuMobile.querySelectorAll(".menu-acc-btn");
-  const categories = menuMobile.querySelectorAll(".menu-accordion-categorias");
-  const categoriesIcons = menuMobile.querySelectorAll(".menu-category-icons");
+const menuBtn = document.querySelector(".header-btn-menu");
+const menuMobile = document.querySelector(".menu-mobile");
+const closeMenuBtn = document.querySelector(".close-icon");
+const btnCategories = menuMobile.querySelectorAll(".menu-acc-btn");
+const categories = menuMobile.querySelectorAll(".menu-accordion-categorias");
+const categoriesIcons = menuMobile.querySelectorAll(".menu-category-icons");
+
+function runActionsOnMenu() {
   // evento que abre el menu de categorias
   menuBtn.addEventListener("click", () => {
     menuMobile.classList.add("menu-transition");
@@ -31,3 +32,18 @@ export default function runActionsOnMenu() {
     });
   });
 }
+
+// funcion que obtiene el atributo data y pasarlo a 'categoriaPlantilla.js' y desplegar
+// informacion de los productos dinamicamente, y no sobre escribir el mismo codigo en
+// multiples archivos html
+function navigateTo() {
+  categories.forEach((category) => {
+    category.addEventListener("click", (e) => {
+      const categoriaId = e.target.dataset.categoriaId;
+      if (!categoriaId) return;
+      sessionStorage.setItem("data-categoria-id", categoriaId);
+    });
+  });
+}
+
+export { runActionsOnMenu, navigateTo };
