@@ -1,6 +1,6 @@
 "use strict";
 // funciones que se usan en diferentes paginas
-import { displayCardProducts } from "./utilityFnsProducts.js";
+import { fetchProducts, displayCardProducts } from "./utilityFnsProducts.js";
 import { runActionsOnMenu, navigateTo } from "./utilityFnMenu.js";
 import {
   showLoadingSpinner,
@@ -66,7 +66,7 @@ const contenedorTituloHombre = document.querySelector(".titulo-H");
 const contenedorTituloMujer = document.querySelector(".titulo-M");
 
 // Event load para que solo se llamen las funciones una vez que ha cargado todo el html y css
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   // funciones para el slider
   setParentHeight();
   createButtons();
@@ -80,8 +80,11 @@ window.addEventListener("load", () => {
   navigateTo();
 
   // funciones que sirven para renderizar destacados
-  displayCardProducts(["mens-watches"], contenedorTituloHombre);
-  displayCardProducts(["womens-jewellery"], contenedorTituloMujer);
+  const menWatches = await fetchProducts(["mens-watches"]);
+  const womensJewellery = await fetchProducts(["womens-jewellery"]);
+
+  displayCardProducts(menWatches, contenedorTituloHombre);
+  displayCardProducts(womensJewellery, contenedorTituloMujer);
 
   hideLoadingSpinner();
 

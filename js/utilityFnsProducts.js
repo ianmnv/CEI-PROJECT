@@ -1,10 +1,15 @@
 // // funcion para obtener productos falsos desde dummyjson.com
-async function fetchProduct(category) {
-  const product = await fetch(
-    `https://dummyjson.com/products/category/${category}`
-  ).then((product) => product.json());
+async function fetchProducts(queryArray) {
+  const allProducts = await Promise.all(
+    queryArray.map(async (query) => {
+      const { products } = await fetch(
+        `https://dummyjson.com/products/category/${query}`
+      ).then((product) => product.json());
+      return products;
+    })
+  );
 
-  return product;
+  return allProducts.flat();
 
   // // Categorias que se muestran en la pagina
   // mens-shirts
@@ -16,20 +21,13 @@ async function fetchProduct(category) {
 }
 
 // // hace un request al dummyjson API y despliega 'cards', funcion reusable
-export async function displayCardProducts(queryArray, contenedorPadre) {
-  const allProducts = await Promise.all(
-    queryArray.map(async (query) => {
-      const { products } = await fetchProduct(query);
-      return products;
-    })
-  );
+async function displayCardProducts(productsArray, contenedorPadre) {
+  contenedorPadre.innerHTML = "";
 
   const contenedorGrid = document.createElement("div");
   contenedorGrid.classList.add("features-grid");
 
-  console.log(allProducts.flat());
-
-  allProducts.flat().map(({ title, price, thumbnail, rating }) => {
+  productsArray.map(({ title, price, thumbnail, rating }) => {
     const contenedorAnchor = document.createElement("a");
     contenedorAnchor.classList.add("features-card");
     contenedorAnchor.setAttribute("href", "./productoIndividual.html");
@@ -60,3 +58,5 @@ export async function displayCardProducts(queryArray, contenedorPadre) {
 
   contenedorPadre.append(contenedorGrid);
 }
+
+export { fetchProducts, displayCardProducts };
