@@ -10,13 +10,11 @@ function runActionsOnMenu() {
   // evento que abre el menu de categorias
   menuBtn.addEventListener("click", () => {
     menuMobile.classList.add("menu-transition");
-    document.body.classList.add("body-stop-overflow-y");
   });
 
   // evento que cierra el menu de categorias
   closeMenuBtn.addEventListener("click", () => {
     menuMobile.classList.remove("menu-transition");
-    document.body.classList.remove("body-stop-overflow-y");
   });
 
   // evento que abre cada categoria

@@ -61,8 +61,8 @@
     </header>
 
     <!-- menu que se muestra al hacer click en icono de barras en el header -->
-    <div class="menu-mobile">
-      <div class="menu-title">
+    <aside class="menu-mobile">
+      <header class="menu-title">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -78,7 +78,7 @@
           />
         </svg>
         <h3>Categorias</h3>
-      </div>
+      </header>
 
       <div class="menu-accordion">
         <button class="menu-acc-btn">
@@ -99,8 +99,8 @@
           </svg>
         </button>
 
-        <div class="menu-accordion-categorias hide">
-          <a href="./categoriaTodosHombre.html"
+        <nav class="menu-accordion-categorias hide">
+          <a href="./categoriaPlantilla.html" data-categoria-id="todo-h"
             >Todo
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@
             </svg>
           </a>
 
-          <a href="#"
+          <a href="./categoriaPlantilla.html" data-categoria-id="mens-shirts"
             >Playeras
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -134,24 +134,7 @@
             </svg>
           </a>
 
-          <a href="#"
-            >Relojes
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-              />
-            </svg>
-          </a>
-
-          <a href="#"
+          <a href="./categoriaPlantilla.html" data-categoria-id="mens-shoes"
             >Zapatos
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +150,40 @@
               />
             </svg>
           </a>
-        </div>
+
+          <a href="./categoriaPlantilla.html" data-categoria-id="mens-watches"
+            >Relojes
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </a>
+          <a href="./categoriaPlantilla.html" data-categoria-id="sunglasses"
+            >Lentes
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </a>
+        </nav>
       </div>
 
       <div class="menu-accordion">
@@ -189,8 +205,8 @@
           </svg>
         </button>
 
-        <div class="menu-accordion-categorias hide">
-          <a href="#"
+        <nav class="menu-accordion-categorias hide">
+          <a href="./categoriaPlantilla.html" data-categoria-id="todo-m"
             >Todo
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -207,7 +223,7 @@
             </svg>
           </a>
 
-          <a href="#"
+          <a href="./categoriaPlantilla.html" data-categoria-id="womens-dresses"
             >Vestidos
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +240,26 @@
             </svg>
           </a>
 
-          <a href="#"
+          <a href="./categoriaPlantilla.html" data-categoria-id="womens-shoes"
+            >Zapatos
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="./categoriaPlantilla.html"
+            data-categoria-id="womens-jewellery"
             >Joyas
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -241,8 +276,8 @@
             </svg>
           </a>
 
-          <a href="#"
-            >Zapatos
+          <a href="./categoriaPlantilla.html" data-categoria-id="womens-watches"
+            >Relojes
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -257,12 +292,29 @@
               />
             </svg>
           </a>
-        </div>
+
+          <a href="./categoriaPlantilla.html" data-categoria-id="womens-bags"
+            >Bolsas
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+              />
+            </svg>
+          </a>
+        </nav>
       </div>
-    </div>
+    </aside>
 
     <main></main>
 
-    <!-- <script src=""></script> -->
+    <script type="module" src="./js/productoIndividual.js"></script>
   </body>
 </html>

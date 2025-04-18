@@ -9,6 +9,10 @@ import {
 
 showLoadingSpinner();
 
+// funciones para menu
+runActionsOnMenu();
+navigateTo();
+
 // // Seleccionando imagenes de la primera seccion y modificando sus posiciones
 const containerSection = document.querySelector(".section-portada-wrapper");
 const imgsContainer = containerSection.querySelectorAll(".section-portada-div");
@@ -67,18 +71,6 @@ const contenedorTituloMujer = document.querySelector(".titulo-M");
 
 // Event load para que solo se llamen las funciones una vez que ha cargado todo el html y css
 window.addEventListener("load", async () => {
-  // funciones para el slider
-  setParentHeight();
-  createButtons();
-  showSlide(index);
-  startInterval();
-  nextBtn.addEventListener("click", () => utilityFn(index + 1));
-  prevBtn.addEventListener("click", () => utilityFn(index - 1));
-
-  // funcion para menu
-  runActionsOnMenu();
-  navigateTo();
-
   // funciones que sirven para renderizar destacados
   const menWatches = await fetchProducts(["mens-watches", "sunglasses"]);
   const womensJewellery = await fetchProducts([
@@ -89,6 +81,15 @@ window.addEventListener("load", async () => {
   displayCardProducts(menWatches, contenedorTituloHombre);
   displayCardProducts(womensJewellery, contenedorTituloMujer);
 
+  // funciones para el slider
+  setParentHeight();
+  createButtons();
+  showSlide(index);
+  startInterval();
+  nextBtn.addEventListener("click", () => utilityFn(index + 1));
+  prevBtn.addEventListener("click", () => utilityFn(index - 1));
+
+  // funcion para ocultar loading spinner una vez que cargo la pagina
   hideLoadingSpinner();
 
   // setParent sera llamado si se reajusta la ventana y adaptar la altura
