@@ -58,6 +58,11 @@
   cursor: pointer;
 }
 
+.active-filter-btn {
+  background-color: #000;
+  color: #fff;
+}
+
 .filter-icons {
   width: 1.5rem;
   height: 1.5rem;

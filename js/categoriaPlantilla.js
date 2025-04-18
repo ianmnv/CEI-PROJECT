@@ -19,19 +19,35 @@ let productsArray;
 
 const filterBtnsContainer = document.querySelector(".filter-btns-container");
 
+let sorted = {
+  price: false,
+  rating: false,
+};
+
+const sortFnsHelper = {
+  price: (a, b) => a.price - b.price,
+  rating: (a, b) => b.rating - a.rating,
+};
+
 filterBtnsContainer.addEventListener("click", (e) => {
   const targetBtn = e.target.closest(".filter-btns");
 
   if (!targetBtn) return;
 
-  if (targetBtn.classList.contains("filter-price-btn")) {
-    console.log("click on pricee 😩");
-    console.log(productsArray);
-  }
+  const isPriceBtn = targetBtn.classList.contains("filter-price-btn");
+  const isRatingBtn = targetBtn.classList.contains("filter-rating-btn");
 
-  if (targetBtn.classList.contains("filter-rating-btn")) {
-    console.log("click on ratinggg");
-  }
+  const type = isPriceBtn ? "price" : isRatingBtn ? "rating" : null;
+
+  sorted[type] = !sorted[type];
+
+  const productsArr = sorted[type]
+    ? productsArray.slice().sort(sortFnsHelper[type])
+    : productsArray;
+
+  displayCardProducts(productsArr, mainGridContainer);
+
+  targetBtn.classList.toggle("active-filter-btn", sorted[type]);
 });
 
 // funcion que utiliza funciones de utilidad para renderizar productos dinamicamente
