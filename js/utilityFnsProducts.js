@@ -12,12 +12,19 @@ async function fetchProducts(queryArray) {
   return allProducts.flat();
 
   // // Categorias que se muestran en la pagina
+
+  // PARA HOMBRE
   // mens-shirts
-  // mens-watches
   // mens-shoes
-  // womens-jewellery
+  // mens-watches
+  // sunglasses
+
+  // PARA MUJER
   // womens-dresses
   // womens-shoes
+  // womens-jewellery
+  // womens-watches
+  // womens-bags
 }
 
 // // hace un request al dummyjson API y despliega 'cards', funcion reusable

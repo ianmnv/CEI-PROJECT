@@ -80,8 +80,11 @@ window.addEventListener("load", async () => {
   navigateTo();
 
   // funciones que sirven para renderizar destacados
-  const menWatches = await fetchProducts(["mens-watches"]);
-  const womensJewellery = await fetchProducts(["womens-jewellery"]);
+  const menWatches = await fetchProducts(["mens-watches", "sunglasses"]);
+  const womensJewellery = await fetchProducts([
+    "womens-jewellery",
+    "womens-bags",
+  ]);
 
   displayCardProducts(menWatches, contenedorTituloHombre);
   displayCardProducts(womensJewellery, contenedorTituloMujer);

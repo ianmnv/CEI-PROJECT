@@ -17,6 +17,24 @@ h2.textContent = "TODOS LOS PRODUCTOS";
 
 let productsArray;
 
+const filterBtnsContainer = document.querySelector(".filter-btns-container");
+
+filterBtnsContainer.addEventListener("click", (e) => {
+  const targetBtn = e.target.closest(".filter-btns");
+
+  if (!targetBtn) return;
+
+  if (targetBtn.classList.contains("filter-price-btn")) {
+    console.log("click on pricee 😩");
+    console.log(productsArray);
+  }
+
+  if (targetBtn.classList.contains("filter-rating-btn")) {
+    console.log("click on ratinggg");
+  }
+});
+
+// funcion que utiliza funciones de utilidad para renderizar productos dinamicamente
 async function displayProductsDynamic() {
   if (dataCategory === "todo-h") {
     document.title = "ICON | Productos para hombre.";
@@ -25,6 +43,7 @@ async function displayProductsDynamic() {
       "mens-shirts",
       "mens-watches",
       "mens-shoes",
+      "sunglasses",
     ]);
     displayCardProducts(productsArray, mainGridContainer);
   } else if (dataCategory === "todo-m") {
@@ -34,13 +53,13 @@ async function displayProductsDynamic() {
       "womens-dresses",
       "womens-shoes",
       "womens-jewellery",
+      "womens-watches",
+      "womens-bags",
     ]);
 
     displayCardProducts(productsArray, mainGridContainer);
   } else {
-    const productText = `${dataCategory
-      .replace("-", " ")
-      .toUpperCase()} PRODUCTS`;
+    const productText = `${dataCategory.replace("-", " ").toUpperCase()}`;
 
     h2.textContent = productText;
     document.title = `ICON | ${productText}`;
@@ -53,6 +72,7 @@ async function displayProductsDynamic() {
   searchFn(productsArray);
 }
 
+// funcion para buscar productos
 function searchFn(productsArr) {
   const searchInp = document.getElementById("search-product-input");
 

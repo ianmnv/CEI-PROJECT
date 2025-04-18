@@ -67,7 +67,7 @@ body {
 /* MENU mobile y tablet */
 .menu-mobile {
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 100%;
@@ -283,9 +283,7 @@ section.section-portada {
 /* SECCION PRODUCTOS DESTACADOS */
 
 .contenedor-titulo {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  display: block;
   margin-bottom: 2rem;
 }
 
