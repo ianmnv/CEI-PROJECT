@@ -34,10 +34,11 @@ async function displayCardProducts(productsArray, contenedorPadre) {
   const contenedorGrid = document.createElement("div");
   contenedorGrid.classList.add("features-grid");
 
-  productsArray.map(({ title, price, thumbnail, rating }) => {
+  productsArray.map(({ title, price, thumbnail, rating, id }) => {
     const contenedorAnchor = document.createElement("a");
     contenedorAnchor.classList.add("features-card");
     contenedorAnchor.setAttribute("href", "./productoIndividual.html");
+    contenedorAnchor.setAttribute("data-product-id", id);
 
     const tituloEl = document.createElement("h3");
     tituloEl.classList.add("feature-card-title");
@@ -61,6 +62,11 @@ async function displayCardProducts(productsArray, contenedorPadre) {
     infoDiv.append(precioSpan, ratingSpan);
     contenedorAnchor.append(imgEl, tituloEl, infoDiv);
     contenedorGrid.append(contenedorAnchor);
+  });
+
+  contenedorGrid.addEventListener("click", (e) => {
+    const productCard = e.target.closest(".features-card");
+    sessionStorage.setItem("single-product-id", productCard.dataset.productId);
   });
 
   contenedorPadre.append(contenedorGrid);
