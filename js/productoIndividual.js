@@ -18,6 +18,7 @@ const spanInfo = mainEl.querySelector(".info-element");
 const allProductDescription = mainEl.querySelectorAll(".description-p");
 const cartBtn = mainEl.querySelector(".cart-btn");
 const spanNumbItems = document.querySelector(".span-numb-of-items");
+const notifyEl = document.querySelector(".shopping-cart-notification");
 
 let productDetails;
 
@@ -77,10 +78,15 @@ cartBtn.addEventListener("click", () => {
   shoppingCart.push(productDetails);
   localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
   spanNumbItems.textContent = shoppingCart.length;
+  notifyEl.classList.add("show-shopping-cart-notification");
+  setTimeout(() => {
+    notifyEl.classList.remove("show-shopping-cart-notification");
+  }, 2000);
 });
 
 window.addEventListener("load", async () => {
   await displayProduct();
   changeImg();
+  spanNumbItems.textContent = shoppingCart.length;
   hideLoadingSpinner();
 });

@@ -93,3 +93,34 @@
   width: 2.4rem;
   height: 2.4rem;
 }
+
+.shopping-cart-notification {
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  gap: clamp(2rem, 4vw, 4rem);
+  top: -10%;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 1rem 3rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 4rem 0px #059a00;
+  transition: top 300ms ease-in-out;
+}
+
+.show-shopping-cart-notification {
+  top: 10%;
+}
+
+.shopping-cart-notification span {
+  flex-shrink: 0;
+  font-size: clamp(var(--font-size-S), 3vw, var(--font-size-M));
+  color: #059a00;
+}
+
+.confirmation-icon {
+  flex-shrink: 0;
+  stroke: #059a00;
+  width: clamp(2rem, 5vw, 5rem);
+}
