@@ -3,6 +3,7 @@ import {
   showLoadingSpinner,
   hideLoadingSpinner,
 } from "./utilityFnsLoadingSpinner.js";
+import { shoppingCart } from "./utilityFnsProducts.js";
 
 showLoadingSpinner();
 
@@ -13,22 +14,27 @@ const mainEl = document.querySelector("main");
 const imgsContainer = mainEl.querySelector(".inner-img-container");
 const mainImg = mainEl.querySelector(".main-img");
 const productName = mainEl.querySelector("h2");
-const span = mainEl.querySelector(".info-element");
+const spanInfo = mainEl.querySelector(".info-element");
 const allProductDescription = mainEl.querySelectorAll(".description-p");
 const cartBtn = mainEl.querySelector(".cart-btn");
+const spanNumbItems = document.querySelector(".span-numb-of-items");
+
+let productDetails;
 
 async function displayProduct() {
   const productId = sessionStorage.getItem("single-product-id");
 
-  if (!productId)
+  if (!productId) {
     mainEl.innerHTML = `
       <h1 
       style="margin:3rem; font-size:var(--font-size-M); 
       font-weight: 500; text-align:center;">
         ¡Producto no encontrado! Vuelve a intentarlo.
       </h1>`;
+    return;
+  }
 
-  const productDetails = await fetch(
+  productDetails = await fetch(
     `https://dummyjson.com/products/${productId}`
   ).then((res) => res.json());
 
@@ -37,22 +43,44 @@ async function displayProduct() {
     imgEl.setAttribute("src", imgPath);
     imgEl.setAttribute("alt", "imagenes del producto");
     imgEl.setAttribute("loading", "lazy");
+    imgEl.setAttribute("class", "inner-imgs");
     imgsContainer.append(imgEl);
   });
 
+  document.title = `ICON | ${productDetails.title.toUpperCase()}`;
   mainImg.setAttribute("src", productDetails.images[0]);
   productName.textContent = productDetails.title;
-  span.textContent = `💲${productDetails.price}`;
+  spanInfo.textContent = `💲${productDetails.price}`;
   allProductDescription[0].textContent = productDetails.description;
   allProductDescription[1].textContent = productDetails.returnPolicy;
   allProductDescription[2].textContent = productDetails.warrantyInformation;
 }
 
+function changeImg() {
+  const images = imgsContainer.querySelectorAll(".inner-imgs");
+  images[0].classList.add("active-img");
+}
+
+imgsContainer.addEventListener("click", (e) => {
+  const imgTarget = e.target.closest(".inner-imgs");
+
+  if (!imgTarget) return;
+
+  mainImg.src = imgTarget.src;
+
+  const images = imgsContainer.querySelectorAll(".inner-imgs");
+  images.forEach((img) => img.classList.remove("active-img"));
+  imgTarget.classList.add("active-img");
+});
+
 cartBtn.addEventListener("click", () => {
-  console.log("producto añadido!");
+  shoppingCart.push(productDetails);
+  localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
+  spanNumbItems.textContent = shoppingCart.length;
 });
 
 window.addEventListener("load", async () => {
   await displayProduct();
+  changeImg();
   hideLoadingSpinner();
 });

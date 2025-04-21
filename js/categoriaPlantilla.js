@@ -4,6 +4,7 @@ import {
   showLoadingSpinner,
   hideLoadingSpinner,
 } from "./utilityFnsLoadingSpinner.js";
+import { shoppingCart } from "./utilityFnsProducts.js";
 
 showLoadingSpinner();
 
@@ -14,6 +15,7 @@ const mainGridContainer = document.querySelector(".main-grid-container");
 const dataCategory = sessionStorage.getItem("data-categoria-id");
 const h2 = document.querySelector(".main-h2");
 h2.textContent = "TODOS LOS PRODUCTOS";
+const spanNumbItems = document.querySelector(".span-numb-of-items");
 
 let productsArray;
 
@@ -109,4 +111,5 @@ window.addEventListener("load", () => {
     return;
   }
   displayProductsDynamic();
+  spanNumbItems.textContent = shoppingCart.length;
 });

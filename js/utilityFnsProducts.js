@@ -72,4 +72,6 @@ async function displayCardProducts(productsArray, contenedorPadre) {
   contenedorPadre.append(contenedorGrid);
 }
 
-export { fetchProducts, displayCardProducts };
+let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+
+export { fetchProducts, displayCardProducts, shoppingCart };

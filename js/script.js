@@ -6,6 +6,7 @@ import {
   showLoadingSpinner,
   hideLoadingSpinner,
 } from "./utilityFnsLoadingSpinner.js";
+import { shoppingCart } from "./utilityFnsProducts.js";
 
 showLoadingSpinner();
 
@@ -21,6 +22,7 @@ const contenedorBtns = containerSection.querySelector(
 );
 const nextBtn = containerSection.querySelector(".btnNext");
 const prevBtn = containerSection.querySelector(".btnPrev");
+const spanNumbItems = document.querySelector(".span-numb-of-items");
 
 let index = 0;
 let btns = [];
@@ -88,6 +90,9 @@ window.addEventListener("load", async () => {
   startInterval();
   nextBtn.addEventListener("click", () => utilityFn(index + 1));
   prevBtn.addEventListener("click", () => utilityFn(index - 1));
+
+  // muestra el numero de productos añadidos al carrito
+  spanNumbItems.textContent = shoppingCart.length;
 
   // funcion para ocultar loading spinner una vez que cargo la pagina
   hideLoadingSpinner();

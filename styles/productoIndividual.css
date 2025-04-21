@@ -25,6 +25,11 @@
   background-color: whitesmoke;
 }
 
+.active-img {
+  border: #000 solid 1px;
+  background-color: whitesmoke;
+}
+
 .section-description-container {
   margin: 4rem 0;
 }
