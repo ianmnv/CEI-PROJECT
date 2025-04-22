@@ -99,7 +99,7 @@
   display: flex;
   align-items: center;
   position: fixed;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: 1rem;
   top: -10%;
   right: 50%;
   transform: translateX(50%);
@@ -114,13 +114,11 @@
 }
 
 .shopping-cart-notification span {
-  flex-shrink: 0;
-  font-size: clamp(var(--font-size-S), 3vw, var(--font-size-M));
+  font-size: clamp(var(--font-size-XS), 3vw, var(--font-size-S));
   color: #059a00;
 }
 
 .confirmation-icon {
-  flex-shrink: 0;
   stroke: #059a00;
-  width: clamp(2rem, 5vw, 5rem);
+  width: clamp(2rem, 3vw, 3rem);
 }
