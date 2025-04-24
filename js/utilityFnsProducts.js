@@ -74,4 +74,8 @@ async function displayCardProducts(productsArray, contenedorPadre) {
 
 let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
-export { fetchProducts, displayCardProducts, shoppingCart };
+const getCart = () => shoppingCart;
+
+const setCart = (newArray) => (shoppingCart = newArray);
+
+export { fetchProducts, displayCardProducts, getCart, setCart };

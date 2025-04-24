@@ -3,7 +3,7 @@ import {
   showLoadingSpinner,
   hideLoadingSpinner,
 } from "./utilityFnsLoadingSpinner.js";
-import { shoppingCart } from "./utilityFnsProducts.js";
+import { getCart } from "./utilityFnsProducts.js";
 
 showLoadingSpinner();
 
@@ -21,6 +21,8 @@ const spanNumbItems = document.querySelector(".span-numb-of-items");
 const notifyEl = document.querySelector(".shopping-cart-notification");
 
 let productDetails;
+
+const shoppingCart = getCart();
 
 async function displayProduct() {
   const productId = sessionStorage.getItem("single-product-id");

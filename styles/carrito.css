@@ -48,6 +48,11 @@ section {
   column-gap: clamp(1rem, 1vw, 3rem);
 }
 
+.products-container h3 {
+  font-size: var(--font-size-M);
+  text-align: center;
+}
+
 .product-container {
   gap: clamp(1rem, 1vw, 2rem);
   justify-content: center;
@@ -72,6 +77,7 @@ section {
 .product-info-container h3 {
   font-size: clamp(var(--font-size-XS), 3vw, var(--font-size-S));
   font-weight: 100;
+  text-align: unset;
 }
 
 .product-inner-container {
@@ -82,7 +88,7 @@ section {
   justify-content: space-between;
 }
 
-.delete-product {
+.delete-product-btn {
   cursor: pointer;
   background-color: transparent;
 }

@@ -6,7 +6,7 @@ import {
   showLoadingSpinner,
   hideLoadingSpinner,
 } from "./utilityFnsLoadingSpinner.js";
-import { shoppingCart } from "./utilityFnsProducts.js";
+import { getCart } from "./utilityFnsProducts.js";
 
 showLoadingSpinner();
 
@@ -92,7 +92,7 @@ window.addEventListener("load", async () => {
   prevBtn.addEventListener("click", () => utilityFn(index - 1));
 
   // muestra el numero de productos añadidos al carrito
-  spanNumbItems.textContent = shoppingCart.length;
+  spanNumbItems.textContent = getCart().length;
 
   // funcion para ocultar loading spinner una vez que cargo la pagina
   hideLoadingSpinner();

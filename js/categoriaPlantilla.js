@@ -4,7 +4,7 @@ import {
   showLoadingSpinner,
   hideLoadingSpinner,
 } from "./utilityFnsLoadingSpinner.js";
-import { shoppingCart } from "./utilityFnsProducts.js";
+import { getCart } from "./utilityFnsProducts.js";
 
 showLoadingSpinner();
 
@@ -111,5 +111,5 @@ window.addEventListener("load", () => {
     return;
   }
   displayProductsDynamic();
-  spanNumbItems.textContent = shoppingCart.length;
+  spanNumbItems.textContent = getCart().length;
 });
