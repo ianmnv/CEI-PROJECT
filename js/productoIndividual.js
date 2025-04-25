@@ -1,3 +1,5 @@
+"use strict";
+
 import { runActionsOnMenu, navigateTo } from "./utilityFnMenu.js";
 import {
   showLoadingSpinner,

@@ -1,3 +1,5 @@
+"use strict";
+
 // // funcion para obtener productos falsos desde dummyjson.com
 async function fetchProducts(queryArray) {
   const allProducts = await Promise.all(

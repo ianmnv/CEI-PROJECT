@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/fav-icon.png"
+      type="image/x-icon"
+    />
+    <title>ICON | PAGO</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/formularioDePago.css" />
+  </head>
+
+  <body>
+    <header>
+      <a class="header-logo-container" href="index.html">
+        <img
+          src="./assets/fav-icon.png"
+          alt="fav-icon"
+          class="header-icons"
+          loading="lazy"
+        />
+        <h1 class="header-h1">ICON</h1>
+      </a>
+    </header>
+
+    <form action="">
+      <div class="form-info-cont">
+        <h2>Informacion personal</h2>
+
+        <div class="form-elements">
+          <label for="full-name">Nombre completo</label>
+          <input type="text" id="full-name" placeholder="David Jones" />
+        </div>
+
+        <div class="form-elements">
+          <label for="email">Correo electronico</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="mi-increible-email@email.com"
+          />
+        </div>
+
+        <div class="form-elements">
+          <label for="numero-de-tel">Numero de telefono</label>
+          <input type="text" id="numero-de-tel" placeholder="+34 111 111 111" />
+        </div>
+
+        <div class="form-address">
+          <h3>Direccion</h3>
+
+          <div class="form-elements">
+            <label for="direccion-calle">Calle</label>
+            <input
+              type="text"
+              id="direccion-calle"
+              placeholder="Ave Catacumbas 5"
+            />
+          </div>
+
+          <div class="form-elements">
+            <label for="direccion-ciudad">Ciudad</label>
+            <input type="text" id="direccion-ciudad" placeholder="Atlantis" />
+          </div>
+
+          <div class="form-elements">
+            <label for="direccion-pais">Pais</label>
+            <input type="text" id="direccion-pais" placeholder="España" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card-cont">
+        <h2>Informacion de tarjeta</h2>
+
+        <div class="form-elements">
+          <label for="numero-de-tarjeta">Numero de tarjeta</label>
+          <input
+            type="text"
+            id="numero-de-tarjeta"
+            placeholder="0000 0000 1111 1111"
+          />
+        </div>
+
+        <div class="form-elements">
+          <label for="nombre-en-tarjeta">Nombre en la tarjeta</label>
+          <input type="text" id="nombre-en-tarjeta" placeholder="David Jones" />
+        </div>
+
+        <div class="form-elements">
+          <label for="expiracion">Expiracion</label>
+          <input type="text" id="expiracion" placeholder="DD/MM/AAAA" />
+        </div>
+
+        <div class="form-elements">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="010" />
+        </div>
+      </div>
+
+      <button class="form-btn">Pagar</button>
+    </form>
+
+    <div class="shopping-cart-notification">
+      <span>Pago completado</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="confirmation-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
+        />
+      </svg>
+    </div>
+
+    <script type="module" src="./js/formularioDePago.js"></script>
+  </body>
+</html>

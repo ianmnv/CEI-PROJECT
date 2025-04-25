@@ -1,3 +1,5 @@
+"use strict";
+
 let loadingDiv;
 
 // // Crea un loading spinner

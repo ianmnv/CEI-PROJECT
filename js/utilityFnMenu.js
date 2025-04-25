@@ -1,3 +1,5 @@
+"use strict";
+
 // // menu acordion que se muestra tras hacer click en el icono de barras del header
 const menuBtn = document.querySelector(".header-btn-menu");
 const menuMobile = document.querySelector(".menu-mobile");
