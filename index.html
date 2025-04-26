@@ -323,111 +323,113 @@
       </div>
     </aside>
 
-    <!-- Seccion principal donde se muestran imagenes con texto -->
-    <section class="section-portada">
-      <div class="section-portada-wrapper">
-        <div class="section-portada-div">
-          <img
-            src="./assets/model-principal.jpg"
-            alt="modelo de ropa"
-            loading="lazy"
-            class="section-portada-img"
-          />
-          <p class="section-portada-p">FEEL ICONIC</p>
+    <main class="main">
+      <!-- Seccion principal donde se muestran imagenes con texto -->
+      <section class="section-portada">
+        <div class="section-portada-wrapper">
+          <div class="section-portada-div">
+            <img
+              src="./assets/model-principal.jpg"
+              alt="modelo de ropa"
+              loading="lazy"
+              class="section-portada-img"
+            />
+            <p class="section-portada-p">FEEL ICONIC</p>
+          </div>
+
+          <div class="section-portada-div">
+            <img
+              src="./assets/model-lolita.jpg"
+              alt="modelo de ropa"
+              loading="lazy"
+              class="section-portada-img"
+            />
+            <p class="section-portada-p">FEEL STYLISH</p>
+          </div>
+
+          <div class="section-portada-div">
+            <img
+              src="./assets/model-ropa.jpg"
+              alt="modelo de ropa"
+              loading="lazy"
+              class="section-portada-img"
+            />
+            <p class="section-portada-p">FEEL CLASSY</p>
+          </div>
+
+          <div class="section-portada-div">
+            <img
+              src="./assets/perchero.jpg"
+              alt="modelo de ropa"
+              loading="lazy"
+              class="section-portada-img"
+            />
+            <p class="section-portada-p">FEEL FRESH</p>
+          </div>
+
+          <!-- Contenedor de botones de navegacion creados dinamicamente en JS -->
+          <div class="section-contenedor-btns"></div>
+
+          <!-- Contenedor de botones siguiente o atras -->
+          <div class="section-btns-nav">
+            <button class="btnsNav btnPrev">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="btnIcon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                />
+              </svg>
+            </button>
+
+            <button class="btnsNav btnNext">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="btnIcon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seccion de productos destacados -->
+      <section class="section-features">
+        <div>
+          <header class="contenedor-titulo">
+            <h2>Destacados</h2>
+            <span class="titulo-categoria">- Para hombre</span>
+          </header>
+
+          <div class="titulo-H"></div>
         </div>
 
-        <div class="section-portada-div">
-          <img
-            src="./assets/model-lolita.jpg"
-            alt="modelo de ropa"
-            loading="lazy"
-            class="section-portada-img"
-          />
-          <p class="section-portada-p">FEEL STYLISH</p>
+        <div>
+          <header class="contenedor-titulo">
+            <h2>Destacados</h2>
+            <span class="titulo-categoria">- Para mujer</span>
+          </header>
+
+          <div class="titulo-M"></div>
         </div>
-
-        <div class="section-portada-div">
-          <img
-            src="./assets/model-ropa.jpg"
-            alt="modelo de ropa"
-            loading="lazy"
-            class="section-portada-img"
-          />
-          <p class="section-portada-p">FEEL CLASSY</p>
-        </div>
-
-        <div class="section-portada-div">
-          <img
-            src="./assets/perchero.jpg"
-            alt="modelo de ropa"
-            loading="lazy"
-            class="section-portada-img"
-          />
-          <p class="section-portada-p">FEEL FRESH</p>
-        </div>
-
-        <!-- Contenedor de botones de navegacion creados dinamicamente en JS -->
-        <div class="section-contenedor-btns"></div>
-
-        <!-- Contenedor de botones siguiente o atras -->
-        <div class="section-btns-nav">
-          <button class="btnsNav btnPrev">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="btnIcon"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-              />
-            </svg>
-          </button>
-
-          <button class="btnsNav btnNext">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="btnIcon"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Seccion de productos destacados -->
-    <section class="section-features">
-      <div>
-        <header class="contenedor-titulo">
-          <h2>Destacados</h2>
-          <span class="titulo-categoria">- Para hombre</span>
-        </header>
-
-        <div class="titulo-H"></div>
-      </div>
-
-      <div>
-        <header class="contenedor-titulo">
-          <h2>Destacados</h2>
-          <span class="titulo-categoria">- Para mujer</span>
-        </header>
-
-        <div class="titulo-M"></div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer>
       <div class="footer-columns">

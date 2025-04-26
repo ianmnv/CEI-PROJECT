@@ -15,13 +15,15 @@ body {
   position: relative;
 }
 
+.stop-scroll-on-body {
+  overflow: hidden;
+}
+
 :root {
   --font-size-XS: 1.2rem;
   --font-size-S: 1.6rem;
   --font-size-M: 2.4rem;
   --font-size-L: 3.6rem;
-  --font-size-XL: 6rem;
-  --font-size-XXL: 9rem;
 }
 
 /* ESTILOS PARA LA PAGINA CUANDO CARGA */
@@ -194,8 +196,19 @@ header {
 
 /* SECCION PRINCIPAL */
 
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
 section.section-portada {
-  margin-bottom: 8rem;
+  position: sticky;
+  top: 60px;
+  height: 90%;
+  flex-grow: 1;
+  flex-basis: 30rem;
 }
 
 .section-portada-wrapper {
@@ -286,6 +299,10 @@ section.section-portada {
 
 /* SECCION PRODUCTOS DESTACADOS */
 
+.section-features {
+  flex-grow: 1;
+}
+
 .contenedor-titulo {
   display: block;
   position: static;
@@ -305,7 +322,7 @@ section.section-portada {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18.8rem, 20rem));
   justify-content: center;
-  gap: 1rem;
+  gap: 3rem;
   margin-bottom: 4rem;
 }
 
@@ -399,7 +416,26 @@ footer {
   height: 5rem;
 }
 
-/* ANIMACIONES */
+/* MEDIA PARA SECCION PORTADA */
+@media (max-width: 593px) {
+  .main {
+    margin: 0;
+    gap: 5rem;
+  }
+
+  section.section-portada {
+    position: static;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-mobile {
+    width: 50%;
+  }
+}
+
+/* ANIMACION DE CARGA */
 @keyframes spin {
   0% {
     transform: rotate(0deg);

@@ -1,6 +1,9 @@
-/* main {
-  margin: 1rem;
-} */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 60rem));
+  justify-content: center;
+  margin-bottom: 5rem;
+}
 
 .imgs-container {
   display: flex;

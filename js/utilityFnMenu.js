@@ -1,6 +1,7 @@
 "use strict";
 
 // // menu acordion que se muestra tras hacer click en el icono de barras del header
+const body = document.querySelector("body");
 const menuBtn = document.querySelector(".header-btn-menu");
 const menuMobile = document.querySelector(".menu-mobile");
 const closeMenuBtn = document.querySelector(".close-icon");
@@ -12,11 +13,13 @@ function runActionsOnMenu() {
   // evento que abre el menu de categorias
   menuBtn.addEventListener("click", () => {
     menuMobile.classList.add("menu-transition");
+    body.classList.add("stop-scroll-on-body");
   });
 
   // evento que cierra el menu de categorias
   closeMenuBtn.addEventListener("click", () => {
     menuMobile.classList.remove("menu-transition");
+    body.classList.remove("stop-scroll-on-body");
   });
 
   // evento que abre cada categoria
